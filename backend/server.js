@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const app = express();
 dotenv.config();
 
+app.use("/public", express.static("public"));
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });

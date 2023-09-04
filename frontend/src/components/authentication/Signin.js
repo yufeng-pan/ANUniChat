@@ -9,7 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-const Login = () => {
+const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <VStack spacing="5px">
-      <FormControl id="email" isRequired>
+      <FormControl id="signin-email" isRequired>
         <FormLabel>Email</FormLabel>
         <Input
           placeholder="Enter Your Email"
@@ -27,7 +27,7 @@ const Login = () => {
           }}
         />
       </FormControl>
-      <FormControl id="password" isRequired>
+      <FormControl id="signin-password" isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup>
           <Input
@@ -74,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signin;

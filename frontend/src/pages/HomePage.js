@@ -9,7 +9,7 @@ import {
   TabPanels,
   TabPanel,
 } from "@chakra-ui/react";
-import Login from "../components/authentication/Login";
+import Signin from "../components/authentication/Signin";
 import Signup from "../components/authentication/Signup";
 
 const HomePage = () => {
@@ -39,12 +39,12 @@ const HomePage = () => {
       >
         <Tabs variant="soft-rounded">
           <TabList>
-            <Tab width="50%">Login</Tab>
+            <Tab width="50%">Signin</Tab>
             <Tab width="50%">Signup</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Login />
+              <Signin />
             </TabPanel>
             <TabPanel>
               <Signup />

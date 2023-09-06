@@ -77,6 +77,7 @@ const Signin = () => {
           onChange={(e) => {
             return setEmail(e.target.value);
           }}
+          value={email}
         />
       </FormControl>
       <FormControl id="signin-password" isRequired>
@@ -88,6 +89,7 @@ const Signin = () => {
             onChange={(e) => {
               return setPassword(e.target.value);
             }}
+            value={password}
           />
           <InputRightElement width="4.5rem">
             <Button
@@ -118,10 +120,10 @@ const Signin = () => {
         width="100%"
         onClick={() => {
           setEmail("guest@example.com");
-          setPassword("guest123");
+          setPassword("guest");
         }}
       >
-        Signin as a Guest
+        Get a Guest Account
       </Button>
     </VStack>
   );

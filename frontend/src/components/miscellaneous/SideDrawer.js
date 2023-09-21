@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
 import ProfileModal from "./ProfileModal";
 import { useHistory } from "react-router-dom";
@@ -24,17 +24,6 @@ const SideDrawer = () => {
 
   const { user } = ChatState();
   const history = useHistory();
-
-  useEffect(() => {
-    // This block of code will run every time `user` changes.
-    // Add logic here to handle the change in user, for example:
-
-    if (user) {
-      console.log("User has changed, current user:", user);
-    } else {
-      console.log("No user is currently logged in");
-    }
-  }, [user]);
 
   const signoutHandler = () => {
     localStorage.removeItem("userInfo");

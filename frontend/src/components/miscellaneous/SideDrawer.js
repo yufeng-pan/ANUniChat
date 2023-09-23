@@ -96,7 +96,7 @@ const SideDrawer = () => {
 
       if (
         !chats.find((c) => {
-          return c._id === data._id;
+          return c?._id === data?._id;
         })
       ) {
         setChats([...chats, data]);
@@ -187,10 +187,10 @@ const SideDrawer = () => {
               searchResults?.map((user) => {
                 return (
                   <UserListItem
-                    key={user._id}
+                    key={user?._id}
                     user={user}
                     handleFunction={() => {
-                      return accessChats(user._id);
+                      return accessChats(user?._id);
                     }}
                   />
                 );

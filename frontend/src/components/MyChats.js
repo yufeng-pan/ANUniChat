@@ -93,7 +93,7 @@ const MyChats = ({ fetchAgain }) => {
                   px={3}
                   py={2}
                   borderRadius="lg"
-                  key={chat._id}
+                  key={chat?._id}
                 >
                   <Text>
                     {!chat.isGroupChat

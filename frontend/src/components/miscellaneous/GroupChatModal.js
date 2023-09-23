@@ -191,7 +191,7 @@ const GroupChatModal = ({ children }) => {
               searchResult?.map((user) => {
                 return (
                   <UserListItem
-                    key={user._id}
+                    key={user?._id}
                     user={user}
                     handleFunction={() => {
                       return handleGroup(user);

@@ -1,4 +1,4 @@
-import { ViewIcon } from "@chakra-ui/icons";
+import { InfoIcon } from "@chakra-ui/icons";
 import {
   Button,
   IconButton,
@@ -25,7 +25,7 @@ const ProfileModal = ({ user, children }) => {
       ) : (
         <IconButton
           display={{ base: "flex" }}
-          icon={<ViewIcon />}
+          icon={<InfoIcon />}
           onClick={onOpen}
         />
       )}

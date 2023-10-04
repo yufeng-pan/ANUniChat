@@ -2,7 +2,9 @@ import { SettingsIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
+  Flex,
   FormControl,
+  HStack,
   IconButton,
   Input,
   Modal,
@@ -12,7 +14,9 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Spacer,
   Spinner,
+  Text,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -21,7 +25,6 @@ import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
-import { set } from "mongoose";
 
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -291,14 +294,23 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
           )}
 
           <ModalFooter>
-            <Button
-              colorScheme="red"
-              onClick={() => {
-                return handleRemove(user);
-              }}
-            >
-              Leave Group
-            </Button>
+            <Flex width="100%">
+              <HStack spacing={1}>
+                <Text fontWeight="bold">Group Admin: </Text>
+                <Text color="#1AACAC" fontWeight="bold">
+                  {selectedChat.groupAdmin.name}
+                </Text>
+              </HStack>
+              <Spacer />
+              <Button
+                colorScheme="red"
+                onClick={() => {
+                  return handleRemove(user);
+                }}
+              >
+                Leave Group
+              </Button>
+            </Flex>
           </ModalFooter>
         </ModalContent>
       </Modal>

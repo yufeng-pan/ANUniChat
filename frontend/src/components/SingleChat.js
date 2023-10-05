@@ -6,7 +6,7 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputRightAddon,
+  InputRightElement,
   Spinner,
   Text,
   useToast,
@@ -268,7 +268,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   placeholder="Enter your message here"
                   onChange={typingHandler}
                 />
-                <InputRightAddon width="4.5rem" backgroundColor="teal">
+                <InputRightElement
+                  width="3.5rem"
+                  backgroundColor="teal"
+                  borderRadius="lg"
+                >
                   <IconButton
                     w="100%"
                     h="100%"
@@ -284,7 +288,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   >
                     Send
                   </IconButton>
-                </InputRightAddon>
+                </InputRightElement>
               </InputGroup>
             </FormControl>
           </Box>

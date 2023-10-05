@@ -5,11 +5,13 @@ import {
   FormControl,
   IconButton,
   Input,
+  InputGroup,
+  InputRightAddon,
   Spinner,
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowUpIcon } from "@chakra-ui/icons";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
@@ -66,7 +68,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   }, []);
 
   const sendMessage = async (e) => {
-    if (e.key === "Enter" && newMessage) {
+    if ((e === "buttonClick" || e.key === "Enter") && newMessage) {
       socket.emit("stop typing", selectedChat._id);
       try {
         const config = {
@@ -258,13 +260,32 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
-              <Input
-                variant="filled"
-                value={newMessage}
-                bg="#E0E0E0"
-                placeholder="Enter your message here"
-                onChange={typingHandler}
-              />
+              <InputGroup>
+                <Input
+                  variant="filled"
+                  value={newMessage}
+                  bg="#E0E0E0"
+                  placeholder="Enter your message here"
+                  onChange={typingHandler}
+                />
+                <InputRightAddon width="4.5rem" backgroundColor="teal">
+                  <IconButton
+                    w="100%"
+                    h="100%"
+                    m="0"
+                    size="md"
+                    fontSize="15px"
+                    variant="solid"
+                    colorScheme="teal"
+                    icon={<ArrowUpIcon />}
+                    onClick={() => {
+                      sendMessage("buttonClick");
+                    }}
+                  >
+                    Send
+                  </IconButton>
+                </InputRightAddon>
+              </InputGroup>
             </FormControl>
           </Box>
         </>

@@ -298,7 +298,11 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
               <HStack spacing={1}>
                 <Text fontWeight="bold">Group Admin: </Text>
                 <Text color="#1AACAC" fontWeight="bold">
-                  {selectedChat.groupAdmin.name}
+                  {selectedChat.users.some((u) => {
+                    return u?._id === selectedChat.groupAdmin._id;
+                  })
+                    ? selectedChat.groupAdmin.name
+                    : `${selectedChat.groupAdmin.name}(already left)`}
                 </Text>
               </HStack>
               <Spacer />

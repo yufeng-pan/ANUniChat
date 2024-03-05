@@ -11,7 +11,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { ArrowBackIcon, ArrowUpIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowUpIcon, SunIcon } from "@chakra-ui/icons";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
@@ -102,6 +102,48 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           position: "bottom",
         });
       }
+    }
+  };
+
+  const getOpenAIResponse = async () => {
+    // 检查是否有输入
+    if (!newMessage.trim()) {
+      toast({
+        title: "Empty message",
+        description: "Please enter a message before getting a suggestion.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+
+    try {
+      console.log("testing");
+      const { data } = await axios.post(
+        "/api/robot/suggest",
+        { message: newMessage },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log("testing2");
+
+      setNewMessage(data.response);
+    } catch (error) {
+      console.error("Error fetching response from OpenAI:", error);
+      toast({
+        title: "Error",
+        description: "Failed to get response from the server",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
     }
   };
 
@@ -273,6 +315,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   backgroundColor="teal"
                   borderRadius="lg"
                 >
+                  <IconButton
+                    w="100%"
+                    h="100%"
+                    m="0"
+                    size="md"
+                    fontSize="15px"
+                    variant="solid"
+                    colorScheme="teal"
+                    icon={<SunIcon />}
+                    onClick={getOpenAIResponse}
+                  >
+                    Get
+                  </IconButton>
                   <IconButton
                     w="100%"
                     h="100%"

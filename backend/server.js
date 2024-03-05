@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const robotRoutes = require("./routes/robotRoutes");
 const path = require("path");
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
+app.use("/api/robot", robotRoutes);
 
 // ------------Deployment----------------
 const __dirname1 = path.resolve();

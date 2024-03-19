@@ -120,10 +120,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
 
     try {
-      console.log("testing");
       const { data } = await axios.post(
         "/api/robot/suggest",
-        { message: newMessage },
+        {
+          chatId: selectedChat._id,
+          myName: user.name,
+          senderName: getSender(user, selectedChat.users),
+        },
         {
           headers: {
             "Content-Type": "application/json",
@@ -131,7 +134,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
         }
       );
-      console.log("testing2");
 
       setNewMessage(data.response);
     } catch (error) {

@@ -8,6 +8,7 @@ import {
   Tab,
   TabPanels,
   TabPanel,
+  Link,
 } from "@chakra-ui/react";
 import Signin from "../components/authentication/Signin";
 import Signup from "../components/authentication/Signup";
@@ -61,6 +62,15 @@ const HomePage = () => {
             </TabPanel>
           </TabPanels>
         </Tabs>
+      </Box>
+      <Box p={4} display="flex" justifyContent="center" w="100%">
+        <Link
+          href="https://github.com/yufeng-pan/ANUniChat"
+          isExternal
+          fontWeight="bold"
+        >
+          Visit My GitHub Repo
+        </Link>
       </Box>
     </Container>
   );

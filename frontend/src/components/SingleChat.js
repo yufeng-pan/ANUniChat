@@ -106,18 +106,18 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   const getOpenAIResponse = async () => {
-    // 检查是否有输入
-    if (!newMessage.trim()) {
-      toast({
-        title: "Empty message",
-        description: "Please enter a message before getting a suggestion.",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      return;
-    }
+    // // 检查是否有输入
+    // if (!newMessage.trim()) {
+    //   toast({
+    //     title: "Empty message",
+    //     description: "Please enter a message before getting a suggestion.",
+    //     status: "warning",
+    //     duration: 5000,
+    //     isClosable: true,
+    //     position: "bottom",
+    //   });
+    //   return;
+    // }
 
     try {
       const { data } = await axios.post(
